@@ -1,0 +1,24 @@
+{
+  "name": "mirandumjs",
+  "version": "0.0.1",
+  "description": "A full fledged, bare bones NodeJS Framework.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/awesome-people/mirandum.git"
+  },
+  "keywords": [
+    "NodeJS",
+    "Framework",
+    "JavaScript"
+  ],
+  "author": "Nitish Kumar",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/awesome-people/mirandum/issues"
+  },
+  "homepage": "https://github.com/awesome-people/mirandum#readme"
+}
