@@ -15,10 +15,19 @@
     "Framework",
     "JavaScript"
   ],
-  "author": "Nitish Kumar",
+  "author": "Nitish Kumar <mintu.nitish@gmail.com>",
   "license": "BSD-3-Clause",
   "bugs": {
     "url": "https://github.com/awesome-people/mirandum/issues"
   },
-  "homepage": "https://github.com/awesome-people/mirandum#readme"
+  "homepage": "https://github.com/awesome-people/mirandum#readme",
+  "dependencies": {
+    "dotenv": "^6.1.0",
+    "module-alias": "^2.1.0"
+  },
+  "_moduleAliases" : {
+    "@root" : ".",
+    "@config" : "./config",
+    "@core" : "./core"
+  }
 }
