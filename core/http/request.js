@@ -16,9 +16,9 @@ const routes = require('Routes/web');
 
 class Request {
     constructor(path, method, headers, queryStr = undefined, payload = undefined) {
-        this.allowedMethods = ['GET', 'POST', 'PUT', 'DELETE'];
+        const allowedMethods = ['GET', 'POST', 'PUT', 'DELETE'];
         this.path = path;
-        this.method = this.allowedMethods.indexOf(method) > -1 ? method.toLowerCase() : false;
+        this.method = allowedMethods.indexOf(method) > -1 ? method.toLowerCase() : false;
         this.queryStr = typeof queryStr !== "undefined" ? queryStr : false;
         this.payload = typeof payload !== "undefined" ? payload : false;
     }

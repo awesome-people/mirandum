@@ -4,7 +4,8 @@
   "description": "A full fledged, bare bones NodeJS Framework with as much less possible overhead of other external modules.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "init": "cp .env.example .env && npm install"
   },
   "repository": {
     "type": "git",
