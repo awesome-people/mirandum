@@ -18,25 +18,48 @@ const url = require('url');
 const StringDecoder = require('string_decoder').StringDecoder;
 const moduleAlias = require('module-alias/register');
 const port = require('@config/app').port;
+const Request = require('./http/request');
 
 let server = {};
 
-server._httpsOptions = {
-    'key' : process.env.HTTPS_KEY_PATH ? process.env.HTTPS_KEY_PATH : false,
-    'cert' : process.env.HTTPS_CERT_PATH ? process.env.HTTPS_CERT_PATH : false
-};
-
 server._unifiedServer = (req, res) => {
-    console.log('Hi', req);
+    const parsedUrl = url.parse(req.url, true);
+    const path = (parsedUrl.pathname).replace(/^\/+|\/+$/g, '');
+    const method = req.method.toUpperCase();
+    const queryStrObj = parsedUrl.query;
+    const headers = req.headers;
+    const decoder = new StringDecoder('utf-8');
+
+    let buffer = '';
+
+    req.on('data', (data) => {
+        buffer += decoder.write(data);
+    });
+
+    req.on('end', () => {
+        buffer += decoder.end();
+        const RequestObj = new Request(path, method, headers, queryStrObj, buffer);
+        const resolvedResult = RequestObj.resolveRoute();
+        if (resolvedResult) {}
+        else {
+            //@TODO Send Not Found Response
+        }
+    });
 };
 
 server.start = () => {
-    if (server._httpsOptions.key && server._httpsOptions.cert) {
+    if (process.env.HTTPS_KEY_PATH && process.env.HTTPS_CERT_PATH) {
+        server._httpsOptions = {
+            'key' : fs.readFileSync(process.env.HTTPS_KEY_PATH),
+            'cert' : fs.readFileSync(process.env.HTTPS_CERT_PATH)
+        };
+
         server._httpsServer = https.createServer(server._httpsOptions, (req, res) => {
-            server._unifiedServer();
+            server._unifiedServer(req, res);
         });
+
         server._httpsServer.listen(port, () => {
-            console.log(`Listening on port ${port} for HTTPS connections!`);
+            console.log('\x1b[35m%s\x1b[0m', `Listening on port ${port} for HTTPS connections!`);
         });
     }
     else if (process.env.ENFORCE_HTTPS === 'true') {
@@ -44,10 +67,10 @@ server.start = () => {
     }
     else {
         server._httpServer = http.createServer((req, res) => {
-            server._unifiedServer();
+            server._unifiedServer(req, res);
         });
         server._httpServer.listen(port, () => {
-            console.log(`Listening on port ${port} for HTTP connections`);
+            console.log('\x1b[36m%s\x1b[0m', `Listening on port ${port} for HTTP connections`);
         });
     }
 };

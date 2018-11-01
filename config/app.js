@@ -25,7 +25,9 @@ class AppConfig {
     }
 
     static getAliases() {
-        return {};
+        return {
+            'Routes' : path.join(__dirname, '/../routes/')
+        };
     }
 }
 

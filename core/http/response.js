@@ -8,9 +8,5 @@
  *
  * @see https://github.com/awesome-people/mirandum
  * 
- * Created By: Nitish Kumar on 1/11/18 11:53 AM
+ * Created By: Nitish Kumar on 1/11/18 4:13 PM
  */
-
-require('module-alias/register');
-const app = require("./bootstrap/app");
-
