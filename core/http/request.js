@@ -27,7 +27,25 @@ class Request {
         if (this.method) {
             if (routes.hasOwnProperty(this.method)) {
                 if (routes[this.method].hasOwnProperty(this.path)) {
-                    // @TODO : Execute Handler
+                    let action = routes[this.method][this.path];
+                    try {
+                        if (typeof action === "function") {
+                            (eval(action))();
+                        }
+                        if (typeof action === "string") {
+                            action = action.split('@');
+                            const controller = action[0];
+                            const method = action[1];
+                            if (controller !== undefined && method !== undefined) {
+                                const Controller = require(`Controllers/${controller}`);
+                                const Instance = new Controller();
+                                return Instance[method]();
+                            }
+                        }
+                    }
+                    catch (e) {
+                        console.log(e);
+                    }
                 }
             }
         }
