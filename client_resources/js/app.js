@@ -8,17 +8,5 @@
  *
  * @see https://github.com/elegans/janaf
  * 
- * Created By: Nitish Kumar on 2/11/18 4:57 PM
+ * Created By: Nitish Kumar on 11/3/2018 5:48 PM
  */
-
-const View = require('@core/view');
-
-class Controller {
-    constructor() {}
-
-    test() {
-        return new View('welcome');
-    }
-}
-
-module.exports = Controller;

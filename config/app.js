@@ -1,12 +1,12 @@
 /*
- * This file is part of the awesome-people/mirandum package.
+ * This file is part of the elegans/janaf package.
  *
  * Copyright (c) 2018, Nitish Kumar <mintu.nitish@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @see https://github.com/awesome-people/mirandum
+ * @see https://github.com/elegans/janaf
  * 
  * Created By: Nitish Kumar on 1/11/18 12:01 PM
  */
@@ -27,7 +27,8 @@ class AppConfig {
     static getAliases() {
         return {
             'Routes' : path.join(__dirname, '/../routes/'),
-            'Controllers' : path.join(__dirname, '/../app/Controllers/')
+            'Controllers' : path.join(__dirname, '/../app/Controllers/'),
+            'Views' : path.join(__dirname, '/../client_resources/views')
         };
     }
 }

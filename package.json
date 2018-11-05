@@ -1,5 +1,5 @@
 {
-  "name": "mirandumjs",
+  "name": "janaf",
   "version": "0.0.1",
   "description": "A full fledged, bare bones NodeJS Framework with as much less possible overhead of other external modules.",
   "main": "index.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/awesome-people/mirandum.git"
+    "url": "git+https://github.com/elegans/janaf.git"
   },
   "keywords": [
     "NodeJS",
@@ -19,9 +19,9 @@
   "author": "Nitish Kumar <mintu.nitish@gmail.com>",
   "license": "BSD-3-Clause",
   "bugs": {
-    "url": "https://github.com/awesome-people/mirandum/issues"
+    "url": "https://github.com/elegans/janaf/issues"
   },
-  "homepage": "https://github.com/awesome-people/mirandum#readme",
+  "homepage": "https://github.com/elegans/janaf#readme",
   "dependencies": {
     "dotenv": "^6.1.0",
     "module-alias": "^2.1.0"

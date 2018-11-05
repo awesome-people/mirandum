@@ -1,12 +1,12 @@
 /*
- * This file is part of the awesome-people/mirandum package.
+ * This file is part of the elegans/janaf package.
  *
  * Copyright (c) 2018, Nitish Kumar <mintu.nitish@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @see https://github.com/awesome-people/mirandum
+ * @see https://github.com/elegans/janaf
  * 
  * Created By: Nitish Kumar on 1/11/18 2:29 PM
  */
@@ -19,6 +19,7 @@ const StringDecoder = require('string_decoder').StringDecoder;
 const moduleAlias = require('module-alias/register');
 const port = require('@config/app').port;
 const Request = require('./http/request');
+const View = require('./view');
 
 let server = {};
 
@@ -40,7 +41,19 @@ server._unifiedServer = (req, res) => {
         buffer += decoder.end();
         const RequestObj = new Request(path, method, headers, queryStrObj, buffer);
         const resolvedResult = RequestObj.resolveRoute();
-        if (resolvedResult) {}
+        if (resolvedResult) {
+            console.log(resolvedResult instanceof View);
+            resolvedResult.renderTemplate((statusCode, data) => {
+                data = typeof data !== "undefined" ? data : '';
+                console.log(1);
+                res.setHeader('Content-Type', 'text/html');
+                console.log(2);
+                res.writeHead(statusCode);
+                console.log(3);
+                res.end(data);
+                console.log(4);
+            });
+        }
         else {
             //@TODO Send Not Found Response
         }
@@ -50,8 +63,8 @@ server._unifiedServer = (req, res) => {
 server.start = () => {
     if (process.env.HTTPS_KEY_PATH && process.env.HTTPS_CERT_PATH) {
         server._httpsOptions = {
-            'key' : fs.readFileSync(process.env.HTTPS_KEY_PATH),
-            'cert' : fs.readFileSync(process.env.HTTPS_CERT_PATH)
+            'key': fs.readFileSync(process.env.HTTPS_KEY_PATH),
+            'cert': fs.readFileSync(process.env.HTTPS_CERT_PATH)
         };
 
         server._httpsServer = https.createServer(server._httpsOptions, (req, res) => {
