@@ -8,13 +8,14 @@
  *
  * @see https://github.com/elegans/janaf
  * 
- * Created By: Nitish Kumar on 2/11/18 5:37 PM
+ * Created By: Nitish Kumar on 6/11/18 1:11 PM
  */
 
-const AeonModels = require('aeon');
+let globals = {};
 
-class Model extends AeonModels {
-    constructor() {
-        super();
-    }
-}
+globals.paths = {
+    SYSTEM_CMD : '@core/cli/commands/',
+    APP_CMD : '@root/app/Commands'
+};
+
+module.exports = globals;

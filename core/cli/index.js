@@ -8,13 +8,18 @@
  *
  * @see https://github.com/elegans/janaf
  * 
- * Created By: Nitish Kumar on 2/11/18 5:37 PM
+ * Created By: Nitish Kumar on 6/11/18 12:44 PM
  */
 
-const AeonModels = require('aeon');
+class Expresivo {
+    constructor(commandWithArgs) {
+        this.rawInput = commandWithArgs;
+        this.commandIdentifier();
+    }
 
-class Model extends AeonModels {
-    constructor() {
-        super();
+    commandIdentifier() {
+        const command = this.rawInput[0];
     }
 }
+
+module.exports = Expresivo;

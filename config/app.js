@@ -14,6 +14,7 @@
 const env = require('dotenv').config();
 const moduleAlias = require('module-alias');
 const path = require('path');
+const globals = require('@config/globals');
 
 class AppConfig {
     constructor() {
@@ -29,6 +30,13 @@ class AppConfig {
             'Routes' : path.join(__dirname, '/../routes/'),
             'Controllers' : path.join(__dirname, '/../app/Controllers/'),
             'Views' : path.join(__dirname, '/../client_resources/views')
+        };
+    }
+
+    static getExpresivoCommands() {
+        return {
+            'create' : globals.paths.SYSTEM_CMD,
+            'inspire' : global.paths.APP_CMD,
         };
     }
 }

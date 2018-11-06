@@ -8,13 +8,11 @@
  *
  * @see https://github.com/elegans/janaf
  * 
- * Created By: Nitish Kumar on 2/11/18 5:37 PM
+ * Created By: Nitish Kumar on 6/11/18 12:53 PM
  */
 
-const AeonModels = require('aeon');
+require('module-alias/register');
+const expresivo = require('@core/cli');
+const args = process.argv.slice(2);
 
-class Model extends AeonModels {
-    constructor() {
-        super();
-    }
-}
+new expresivo(args);

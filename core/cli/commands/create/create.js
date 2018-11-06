@@ -8,13 +8,5 @@
  *
  * @see https://github.com/elegans/janaf
  * 
- * Created By: Nitish Kumar on 2/11/18 5:37 PM
+ * Created By: Nitish Kumar on 6/11/18 1:09 PM
  */
-
-const AeonModels = require('aeon');
-
-class Model extends AeonModels {
-    constructor() {
-        super();
-    }
-}

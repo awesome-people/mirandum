@@ -45,13 +45,9 @@ server._unifiedServer = (req, res) => {
             console.log(resolvedResult instanceof View);
             resolvedResult.renderTemplate((statusCode, data) => {
                 data = typeof data !== "undefined" ? data : '';
-                console.log(1);
                 res.setHeader('Content-Type', 'text/html');
-                console.log(2);
                 res.writeHead(statusCode);
-                console.log(3);
                 res.end(data);
-                console.log(4);
             });
         }
         else {
