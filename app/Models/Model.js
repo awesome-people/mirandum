@@ -11,9 +11,9 @@
  * Created By: Nitish Kumar on 2/11/18 5:37 PM
  */
 
-const AeonModels = require('aeon');
+const Models = require('aeon');
 
-class Model extends AeonModels {
+class Model extends Models {
     constructor() {
         super();
     }
