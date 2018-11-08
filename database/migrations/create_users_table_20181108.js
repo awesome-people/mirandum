@@ -26,7 +26,9 @@ class CreateUsersTable extends Migrations
         this.table.string('email');
         this.table.string('password');
         this.table.timestamps();
-        Schema.create('users', this.table.structure);
+        Schema.create('users', this.table.structure, (res) => {
+            console.log(this.constructor.name.toString());
+        });
     }
 
     down() {
