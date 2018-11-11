@@ -18,6 +18,10 @@ class App {
     constructor() {
         server.start();
     }
+
+    static convertRouteToGlobalLiterals() {
+        // @TODO : Next Release
+    }
 }
 
 module.exports = new App();

@@ -18,4 +18,9 @@ globals.paths = {
     APP_CMD : '@root/app/Commands'
 };
 
+globals.templateLiterals = {
+    APP_NAME : process.env.APP_NAME,
+    HOME_URL : process.env.APP_PROTOCOL + '://' + process.env.APP_URL + ':' + process.env.APP_PORT + '/'
+};
+
 module.exports = globals;

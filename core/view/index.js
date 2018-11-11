@@ -53,7 +53,10 @@ class View {
     }
 
     _interpolateData(viewContent) {
-        return viewContent;
+        // handle layouts, sections
+        for(let i in this.data) {
+
+        }
     }
 }
 
