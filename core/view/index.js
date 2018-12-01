@@ -54,9 +54,18 @@ class View {
 
     _interpolateData(viewContent) {
         // handle layouts, sections
-        for(let i in this.data) {
+        // handle template helpers
 
+        // handle view based passed data
+        for(let key in this.data) {
+            if(this.data.hasOwnProperty(key) && typeof(this.data[key]) !== "undefined") {
+                let replace = this.data[key];
+                let find = `@{${key}}`;
+                viewContent = viewContent.replace(find, replace);
+            }
         }
+
+        return viewContent;
     }
 }
 

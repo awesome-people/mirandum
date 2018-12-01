@@ -42,7 +42,6 @@ server._unifiedServer = (req, res) => {
         const RequestObj = new Request(path, method, headers, queryStrObj, buffer);
         const resolvedResult = RequestObj.resolveRoute();
         if (resolvedResult) {
-            console.log(resolvedResult instanceof View);
             resolvedResult.renderTemplate((statusCode, data) => {
                 data = typeof data !== "undefined" ? data : '';
                 res.setHeader('Content-Type', 'text/html');
